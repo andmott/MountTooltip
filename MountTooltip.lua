@@ -69,8 +69,6 @@ function MountTooltip.CheckAurasForMount(
     -- add mount info to the tooltip
     GameTooltip:AddLine(iconString .. mount.name);
     GameTooltip:AddLine(mount.whereFrom);
-    GameTooltip:AddLine(mount.description);
-
 
     -- breaks the loop from AuraUtil because our function returns a value
     return true;
