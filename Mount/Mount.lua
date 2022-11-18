@@ -14,6 +14,15 @@ MountTooltip.Mount = {
   isCollected = "",
   mountID = "",
   isForDragonriding = "",
+  creatureDisplayInfoID = "";
+  description = "";
+  source = "";
+  isSelfMount = "";
+  mountTypeID = "";
+  uiModelSceneID = "";
+  animID = "";
+  spellVisualKitID = "";
+  disablePlayerMountPreview = "";
 };
 
 -- constructor
@@ -54,6 +63,20 @@ function MountTooltip.Mount:getMountInfo(checkMountID)
     = C_MountJournal.GetMountInfoByID(checkMountID);
   end
 
+    if ( type(checkMountID) == "number" ) then
+    creatureDisplayInfoID,
+    description,
+    source,
+    isSelfMount,
+    mountTypeID,
+    uiModelSceneID,
+    animID,
+    spellVisualKitID,
+    disablePlayerMountPreview
+    = C_MountJournal.GetMountInfoExtraByID(checkMountID);
+  end
+
+
   -- see if name is not nil, then store the data
   if (name) then
     foundMountInfo = true;
@@ -71,6 +94,10 @@ function MountTooltip.Mount:getMountInfo(checkMountID)
     self.isCollected = isCollected;
     self.mountID = mountID;
     self.isForDragonriding = isForDragonriding;
+    self.creatureDisplayInfoID = creatureDisplayInfoID;
+    self.description = description;
+    self.whereFrom = source;
+
   end
 
   return foundMountInfo;
